@@ -60,11 +60,17 @@
 
       <div class="mt-4">
         <div class="flex justify-between items-center mb-4 px-4">
-          <div>
+          <div
+            class="grow grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+          >
             <div>Name</div>
+            <div class="hidden sm:block">Email</div>
+            <div class="hidden md:block">Phone number</div>
+            <div class="hidden lg:block">Job title & company</div>
+            <div class="hidden xl:block">Labels</div>
           </div>
           <div>
-            <button>
+            <button class="rounded-full hover:bg-gray-200 p-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -104,21 +110,102 @@
               </svg>
               <h2 class="font-medium">Favorites (3)</h2>
             </div>
-            <div class="mt-4 grid">
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                foo
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                bar
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
+            <div class="mt-4">
+              <div class="group flex justify-between hover:cursor-pointer">
+                <div
+                  class="grow pl-3 grid items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 hover:bg-slate-50 peer"
+                >
+                  <div>foo</div>
+                  <a
+                    href="mailto:foo@mail.com"
+                    class="hidden sm:block w-fit hover:text-blue-600"
+                  >
+                    foo@mail.com
+                  </a>
+                  <div class="hidden md:block">6281234567890</div>
+                  <div class="hidden lg:block">Job, Company</div>
+                  <div class="hidden xl:flex gap-1">
+                    <a
+                      href="#"
+                      class="rounded-lg border border-slate-300 px-3 py-2 hover:bg-slate-200"
+                    >
+                      Foo
+                    </a>
+                    <a
+                      href="#"
+                      class="rounded-lg border border-slate-300 px-3 py-2 hover:bg-slate-200"
+                    >
+                      Bar
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="invisible group-hover:visible flex peer-hover:bg-slate-50"
+                >
+                  <button
+                    class="rounded-full hover:bg-gray-200 p-3"
+                    title="Remove from favorites"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="icon icon-tabler icons-tabler-filled icon-tabler-star text-blue-700"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path
+                        d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="rounded-full hover:bg-gray-200 p-3"
+                    title="Edit content"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="icon icon-tabler icons-tabler-outline icon-tabler-pencil"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path
+                        d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4"
+                      />
+                      <path d="M13.5 6.5l4 4" />
+                    </svg>
+                  </button>
+                  <button
+                    class="rounded-full hover:bg-gray-200 p-3"
+                    title="More actions"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="icon icon-tabler icons-tabler-outline icon-tabler-dots-vertical"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                      <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                      <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </section>
@@ -127,185 +214,105 @@
               <h2 class="font-medium">Contacts</h2>
             </div>
             <div class="mt-4 grid">
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                foo
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                bar
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
-              </div>
-              <div
-                class="rounded-sm hover:bg-slate-200 hover:cursor-pointer py-2 pl-3"
-              >
-                baz
+              <div class="group flex justify-between hover:cursor-pointer">
+                <div
+                  class="grow pl-3 grid items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 hover:bg-slate-50 peer"
+                >
+                  <div>foo</div>
+                  <a
+                    href="mailto:foo@mail.com"
+                    class="hidden sm:block w-fit hover:text-blue-600"
+                  >
+                    foo@mail.com
+                  </a>
+                  <div class="hidden md:block">6281234567890</div>
+                  <div class="hidden lg:block">Job, Company</div>
+                  <div class="hidden xl:flex gap-1">
+                    <a
+                      href="#"
+                      class="rounded-lg border border-slate-300 px-3 py-2 hover:bg-slate-200"
+                    >
+                      Foo
+                    </a>
+                    <a
+                      href="#"
+                      class="rounded-lg border border-slate-300 px-3 py-2 hover:bg-slate-200"
+                    >
+                      Bar
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="invisible group-hover:visible flex peer-hover:bg-slate-50"
+                >
+                  <button
+                    class="rounded-full hover:bg-gray-200 p-3"
+                    title="Add to favorites"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="icon icon-tabler icons-tabler-outline icon-tabler-star"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path
+                        d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="rounded-full hover:bg-gray-200 p-3"
+                    title="Edit content"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="icon icon-tabler icons-tabler-outline icon-tabler-pencil"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path
+                        d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4"
+                      />
+                      <path d="M13.5 6.5l4 4" />
+                    </svg>
+                  </button>
+                  <button
+                    class="rounded-full hover:bg-gray-200 p-3"
+                    title="More actions"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="icon icon-tabler icons-tabler-outline icon-tabler-dots-vertical"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                      <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                      <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </section>
