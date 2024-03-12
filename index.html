@@ -12,11 +12,12 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <script defer src="/assets/js/nav.js"></script>
     <script defer src="/assets/js/index.js"></script>
   </head>
   <body class="overflow-hidden bg-slate-50">
     <header class="px-5 py-4 flex gap-6 items-center">
-      <button class="rounded-full hover:bg-gray-200 p-3">
+      <button id="nav-toggle" class="rounded-full hover:bg-gray-200 p-3">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -54,9 +55,12 @@
       </a>
     </header>
     <div class="flex mt-4 pr-4">
-      <nav class="hidden xl:block w-96 px-3">
+      <nav
+        id="nav"
+        class="nav-closed bg-white xl:bg-transparent w-96 h-dvh px-3 border-r xl:border-none shadow-md xl:shadow-none"
+      >
         <button
-          class="flex gap-3 items-center px-5 py-4 bg-sky-200 rounded-2xl font-semibold hover:shadow-md shadow-gray-400"
+          class="hidden xl:flex gap-3 items-center px-5 py-4 bg-sky-200 rounded-2xl font-semibold hover:shadow-md shadow-gray-400"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -464,7 +468,7 @@
         </div>
 
         <button
-          class="fixed bottom-6 right-6 p-5 rounded-2xl bg-blue-100 shadow-md shadow-gray-400"
+          class="fixed xl:hidden bottom-6 right-6 p-5 rounded-2xl bg-blue-100 shadow-md shadow-gray-400"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

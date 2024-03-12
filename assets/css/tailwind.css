@@ -9,3 +9,11 @@
     @apply font-normal not-italic text-sm text-gray-700;
   }
 }
+
+.nav-closed {
+  @apply hidden;
+}
+
+.nav-open {
+  @apply block absolute xl:static;
+}
