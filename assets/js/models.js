@@ -137,7 +137,7 @@ class Label {
 
   update(id, data) {
     const labels = this.#get()
-    const index = labels.findIndex(label => label.id === id)
+    const index = labels.findIndex(label => label.id === Number.parseInt(id))
 
     if (index !== -1) {
       labels[index] = data
@@ -147,7 +147,7 @@ class Label {
 
   destroy(id, keepContacts = true) {
     const labels = this.#get()
-    const index = labels.findIndex(label => label.id === id)
+    const index = labels.findIndex(label => label.id === Number.parseInt(id))
 
     if (index !== -1) {
       labels.splice(index, 1)
@@ -178,12 +178,12 @@ class Contact {
   }
 
   show(id) {
-    return this.#get().find(contact => contact.id === id)
+    return this.#get().find(contact => contact.id === Number.parseInt(id))
   }
 
   update(id, data) {
     const contacts = this.#get()
-    const index = contacts.findIndex(contact => contact.id === id)
+    const index = contacts.findIndex(contact => contact.id === Number.parseInt(id))
 
     if (index !== -1) {
       contacts[index] = data
@@ -193,7 +193,7 @@ class Contact {
 
   destroy(id) {
     const contacts = this.#get()
-    const index = contacts.findIndex(contact => contact.id === id)
+    const index = contacts.findIndex(contact => contact.id === Number.parseInt(id))
 
     if (index !== -1) {
       contacts[index].deleted_at = Date.now()
@@ -203,12 +203,26 @@ class Contact {
 
   restore() {
     const contacts = this.#get()
-    const index = contacts.findIndex(contact => contact.id === id)
+    const index = contacts.findIndex(contact => contact.id === Number.parseInt(id))
 
     if (index !== -1) {
       contacts[index].deleted_at = null
       this.#set(contacts)
     }
+  }
+
+  addToFavorites(id) {
+    const contact = this.show(id)
+
+    contact.is_favorite = true
+    this.update(id, contact)
+  }
+
+  removeFromFavorites(id) {
+    const contact = this.show(id)
+
+    contact.is_favorite = false
+    this.update(id, contact)
   }
 }
 

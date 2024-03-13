@@ -1,11 +1,33 @@
 (() => {
-  const contacts = new Contact().index()
+  const contactModel = new Contact()
+  let contacts = []
+  let favorites = []
 
-  const favorites = contacts.filter(contact => contact.is_favorite)
+  refresh()
 
-  renderCounter()
-  renderFavoritesSection()
-  renderContacts()
+  function refresh() {
+    contacts = contactModel.index()
+    favorites = contacts.filter(contact => contact.is_favorite)
+    renderCounter()
+    renderFavoritesSection()
+    renderContacts()
+
+    document.querySelectorAll('.remove-from-favorites').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        const id = event.currentTarget.dataset.id
+        contactModel.removeFromFavorites(id)
+        refresh()
+      })
+    })
+
+    document.querySelectorAll('.add-to-favorites').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        const id = event.currentTarget.dataset.id
+        contactModel.addToFavorites(id)
+        refresh()
+      })
+    })
+  }
 
   function renderCounter() {
     document.getElementById('contacts-count').textContent = contacts.length
@@ -126,8 +148,9 @@
     return contact.is_favorite
       ? /* html */`
         <button
-          class="rounded-full hover:bg-gray-200 p-3"
+          class="remove-from-favorites rounded-full hover:bg-gray-200 p-3"
           title="Remove from favorites"
+          data-id="${contact.id}"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -146,8 +169,9 @@
       `
       : /* html */`
         <button
-          class="rounded-full hover:bg-gray-200 p-3"
+          class="add-to-favorites rounded-full hover:bg-gray-200 p-3"
           title="Add to favorites"
+          data-id="${contact.id}"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
