@@ -135,6 +135,17 @@ class Label {
     return this.#get()
   }
 
+  indexWithTotalContacts() {
+    const labels = this.#get()
+    const contacts = (new Contact()).index()
+
+    labels.forEach((label) => {
+      label.total_contacts = contacts.filter(contact => contact.labels.map(label => label.id).includes(label.id)).length
+    })
+
+    return labels
+  }
+
   update(id, data) {
     const labels = this.#get()
     const index = labels.findIndex(label => label.id === Number.parseInt(id))
