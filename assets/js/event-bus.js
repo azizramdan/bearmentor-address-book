@@ -31,5 +31,6 @@ class EventBus {
 }
 
 EVENT_LABELS_UPDATED = 'labels:updated'
+EVENT_CONTACTS_UPDATED = 'contacts:updated'
 
 window.$eventBus = new EventBus()

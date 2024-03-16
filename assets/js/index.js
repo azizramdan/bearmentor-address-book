@@ -4,7 +4,9 @@
   let favorites = []
 
   refresh()
+  initEvents()
   $eventBus.on(EVENT_LABELS_UPDATED, refresh)
+  $eventBus.on(EVENT_CONTACTS_UPDATED, refresh)
 
   function refresh() {
     contacts = contactModel.index()
@@ -12,20 +14,22 @@
     renderCounter()
     renderFavoritesSection()
     renderContacts()
+  }
 
-    document.querySelectorAll('.remove-from-favorites').forEach((button) => {
-      button.addEventListener('click', (event) => {
-        const id = event.currentTarget.dataset.id
-        contactModel.removeFromFavorites(id)
-        refresh()
-      })
-    })
+  function initEvents() {
+    ['favorites-section', 'contacts-section'].forEach((section) => {
+      document.getElementById(section).addEventListener('click', (event) => {
+        const removeFromFavoritesButton = event.target.closest('.remove-from-favorites')
+        if (removeFromFavoritesButton) {
+          contactModel.removeFromFavorites(removeFromFavoritesButton.dataset.id)
+        }
 
-    document.querySelectorAll('.add-to-favorites').forEach((button) => {
-      button.addEventListener('click', (event) => {
-        const id = event.currentTarget.dataset.id
-        contactModel.addToFavorites(id)
-        refresh()
+        const addToFavoritesButton = event.target.closest('.add-to-favorites')
+        if (addToFavoritesButton) {
+          contactModel.addToFavorites(addToFavoritesButton.dataset.id)
+        }
+
+        $eventBus.emit(EVENT_CONTACTS_UPDATED)
       })
     })
   }
