@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contacts</title>
+    <title>Label</title>
     <meta name="description" content="Store and access contact information" />
 
     <link href="/assets/css/index.css" rel="stylesheet" />
@@ -16,7 +16,6 @@
     <script defer src="/assets/js/event-bus.js"></script>
     <script defer src="/assets/js/models.js"></script>
     <script defer src="/assets/js/nav.js"></script>
-    <script defer src="/assets/js/index.js"></script>
   </head>
   <body class="overflow-hidden bg-slate-50">
     <header class="px-5 py-4 flex gap-6 items-center">
@@ -63,7 +62,7 @@
         class="nav-open bg-white xl:bg-transparent w-96 h-dvh px-3 border-r xl:border-none shadow-md xl:shadow-none"
       >
         <a
-          href="/new"
+          href="/create"
           class="hidden w-fit xl:flex gap-3 items-center px-5 py-4 bg-sky-200 rounded-2xl font-semibold hover:shadow-md shadow-gray-400"
         >
           <svg
@@ -87,7 +86,7 @@
         <div class="mt-5">
           <a
             href="/"
-            class="flex items-center justify-between rounded-full bg-sky-200 hover:brightness-95 w-full py-3 px-5 font-semibold"
+            class="flex items-center justify-between rounded-full hover:bg-slate-200 w-full py-3 px-5 font-semibold"
           >
             <span class="flex items-center gap-3">
               <svg
@@ -166,96 +165,7 @@
         </div>
       </nav>
       <main class="w-full bg-white xl:rounded-3xl pt-8 px-6">
-        <div class="flex gap-2 px-4 items-center">
-          <h1 class="text-3xl">Contacts</h1>
-          <span class="text-base">(<span id="contacts-count">0</span>)</span>
-        </div>
-
-        <div class="mt-4">
-          <div class="flex justify-between items-center mb-4 px-4">
-            <div
-              class="grow grid pl-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
-            >
-              <div>Name</div>
-              <div class="hidden sm:block">Email</div>
-              <div class="hidden md:block">Phone number</div>
-              <div class="hidden lg:block">Job title & company</div>
-              <div class="hidden xl:block">Labels</div>
-            </div>
-            <div class="w-32 flex justify-end">
-              <button class="rounded-full hover:bg-gray-200 p-3">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="icon icon-tabler icons-tabler-outline icon-tabler-dots-vertical"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                  <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                  <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <hr class="my-1 border-gray-300 mx-2" />
-          <div class="overflow-y-auto h-dvh px-4">
-            <section id="favorites-section" class="hidden mt-4">
-              <div class="text-sm text-gray-700 flex gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  class="icon icon-tabler icons-tabler-filled icon-tabler-star"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path
-                    d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"
-                  />
-                </svg>
-                <h2 class="font-medium">
-                  Favorites (<span id="favorites-count">0</span>)
-                </h2>
-              </div>
-              <div id="favorites-container" class="mt-4"></div>
-            </section>
-            <section id="contacts-section" class="mt-4">
-              <div class="text-sm text-gray-700 flex gap-2">
-                <h2 class="font-medium">Contacts</h2>
-              </div>
-              <div id="contacts-container" class="mt-4 grid"></div>
-            </section>
-          </div>
-        </div>
-
-        <button
-          class="fixed xl:hidden bottom-6 right-6 p-5 rounded-2xl bg-blue-100 shadow-md shadow-gray-400"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M12 5l0 14" />
-            <path d="M5 12l14 0" />
-          </svg>
-        </button>
+        contacts by label page
       </main>
     </div>
 

@@ -29,7 +29,7 @@
       .indexWithTotalContacts()
       .map(label => /* html */ `
         <a
-          href="#"
+          href="/label/?id=${label.id}"
           class="flex items-center justify-between rounded-full hover:bg-slate-200 w-full py-1 pl-5 font-semibold group h-14"
         >
           <span class="flex items-center gap-3">
@@ -139,6 +139,8 @@
       const button = event.target.closest('.rename-label-button')
 
       if (button) {
+        event.preventDefault()
+
         const label = (new Label()).show(button.dataset.id)
         document.getElementById('rename-label-id').value = label.id
         document.getElementById('rename-label-input').value = label.name
@@ -170,6 +172,8 @@
       const button = event.target.closest('.delete-label-button')
 
       if (button) {
+        event.preventDefault()
+
         const labelModel = new Label()
         const id = button.dataset.id
         const totalContacts = labelModel.totalContacts(id)
