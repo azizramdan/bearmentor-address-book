@@ -3,7 +3,7 @@
  * Reset seeder if version changes
  */
 (() => {
-  const VERSION = '0.0.1'
+  const VERSION = '0.0.2'
 
   const labels = [
     {
