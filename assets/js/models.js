@@ -186,7 +186,11 @@ class Contact {
   }
 
   #get() {
-    const contacts = JSON.parse(localStorage.getItem(this.#STORAGE_KEY))
+    return JSON.parse(localStorage.getItem(this.#STORAGE_KEY))
+  }
+
+  index() {
+    const contacts = this.#get().filter(contact => !contact.deleted_at)
     const labels = (new Label()).index()
 
     return contacts.map((contact) => {
@@ -199,10 +203,6 @@ class Contact {
 
       return contact
     })
-  }
-
-  index() {
-    return this.#get().filter(contact => !contact.deleted_at)
   }
 
   show(id) {
