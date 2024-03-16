@@ -1,4 +1,10 @@
+/**
+ * Seeder for labels and contacts
+ * Reset seeder if version changes
+ */
 (() => {
+  const VERSION = '0.0.1'
+
   const labels = [
     {
       id: 1,
@@ -102,12 +108,14 @@
   ]
 
   // set default values
-  if (!localStorage.getItem('labels')) {
+  if (!localStorage.getItem('labels') || localStorage.getItem('VERSION') !== VERSION) {
     localStorage.setItem('labels', JSON.stringify(labels))
   }
-  if (!localStorage.getItem('contacts')) {
+  if (!localStorage.getItem('contacts') || localStorage.getItem('VERSION') !== VERSION) {
     localStorage.setItem('contacts', JSON.stringify(contacts))
   }
+
+  localStorage.setItem('VERSION', VERSION)
 })()
 
 class Label {
