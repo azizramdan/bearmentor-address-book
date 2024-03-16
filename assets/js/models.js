@@ -146,6 +146,13 @@ class Label {
     return labels
   }
 
+  store(name) {
+    const labels = this.#get()
+    const id = new Date().getTime()
+    labels.push({ id, name })
+    this.#set(labels)
+  }
+
   update(id, data) {
     const labels = this.#get()
     const index = labels.findIndex(label => label.id === Number.parseInt(id))

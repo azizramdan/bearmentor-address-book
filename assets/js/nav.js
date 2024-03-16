@@ -9,6 +9,30 @@
   navToggleEl.addEventListener('click', toggle)
   renderContactsCount()
   renderLabels()
+  initCreateLabelsModal()
+
+  function initCreateLabelsModal() {
+    const modal = document.getElementById('create-label-modal')
+
+    document.getElementById('create-label-button').addEventListener('click', () => {
+      modal.showModal()
+    })
+
+    document.querySelector('.close-modal-button').addEventListener('click', () => {
+      modal.close()
+    })
+
+    document.getElementById('create-label-form').addEventListener('submit', (event) => {
+      event.preventDefault()
+      const form = new FormData(event.target);
+
+      (new Label()).store(form.get('name'))
+
+      modal.close()
+      event.target.reset()
+      renderLabels()
+    })
+  }
 
   function toggle() {
     navEl.classList.toggle('nav-closed')
