@@ -4,6 +4,7 @@
   let favorites = []
 
   refresh()
+  $eventBus.on(EVENT_LABELS_UPDATED, refresh)
 
   function refresh() {
     contacts = contactModel.index()

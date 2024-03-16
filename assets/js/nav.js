@@ -12,6 +12,8 @@
   initCreateLabelsModal()
   initRenameLabelsModal()
 
+  $eventBus.on(EVENT_LABELS_UPDATED, renderLabels)
+
   function initCreateLabelsModal() {
     const modal = document.getElementById('create-label-modal')
 
@@ -31,7 +33,7 @@
 
       modal.close()
       event.target.reset()
-      renderLabels()
+      $eventBus.emit(EVENT_LABELS_UPDATED)
     })
   }
 
@@ -62,7 +64,7 @@
 
       modal.close()
       event.target.reset()
-      renderLabels()
+      $eventBus.emit(EVENT_LABELS_UPDATED)
     })
   }
 
