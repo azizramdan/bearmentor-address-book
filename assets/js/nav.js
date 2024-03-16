@@ -13,6 +13,7 @@
   renderLabels()
   initCreateLabelsModal()
   initRenameLabelsModal()
+  initDeleteLabelsModal()
 
   function toggle() {
     navEl.classList.toggle('nav-closed')
@@ -74,8 +75,9 @@
                 </svg>
               </button>
               <button
-                class="rounded-full hover:bg-gray-300 p-3"
+                class="delete-label-button rounded-full hover:bg-gray-300 p-3"
                 title="Delete label"
+                data-id="${label.id}"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -154,6 +156,47 @@
       const form = new FormData(event.target);
 
       (new Label()).update(form.get('id'), form.get('name'))
+
+      modal.close()
+      event.target.reset()
+      $eventBus.emit(EVENT_LABELS_UPDATED)
+    })
+  }
+
+  function initDeleteLabelsModal() {
+    const modal = document.getElementById('delete-label-modal')
+
+    document.getElementById('nav-labels').addEventListener('click', (event) => {
+      const button = event.target.closest('.delete-label-button')
+
+      if (button) {
+        const labelModel = new Label()
+        const id = button.dataset.id
+        const totalContacts = labelModel.totalContacts(id)
+
+        if (!totalContacts) {
+          labelModel.destroy(id)
+
+          $eventBus.emit(EVENT_LABELS_UPDATED)
+          return
+        }
+
+        document.getElementById('delete-label-contact-count').textContent = totalContacts
+        document.getElementById('delete-label-id').value = id
+
+        modal.showModal()
+      }
+    })
+
+    document.getElementById('delete-label-close-modal-button').addEventListener('click', () => {
+      modal.close()
+    })
+
+    document.getElementById('delete-label-form').addEventListener('submit', (event) => {
+      event.preventDefault()
+      const form = new FormData(event.target);
+
+      (new Label()).destroy(form.get('id'), Number.parseInt(form.get('keep-contacts')) === 1)
 
       modal.close()
       event.target.reset()

@@ -169,19 +169,25 @@ class Label {
     }
   }
 
-  destroy(id, keepContacts = true) {
+  totalContacts(id) {
+    return (new Contact()).index().filter(contact => contact.labels.map(label => label.id).includes(Number.parseInt(id))).length
+  }
+
+  destroy(id, keepContacts) {
     const labels = this.#get()
     const index = labels.findIndex(label => label.id === Number.parseInt(id))
 
     if (index !== -1) {
-      labels.splice(index, 1)
-      this.#set(labels)
+      const contactModel = new Contact()
 
       if (keepContacts) {
-        // TODO: remove label from contacts
+        contactModel.removeLabel(id)
       } else {
-        // TODO: remove contacts with this label
+        contactModel.destroyByLabel(id)
       }
+
+      labels.splice(index, 1)
+      this.#set(labels)
     }
   }
 }
@@ -235,6 +241,28 @@ class Contact {
       contacts[index].deletedAt = Date.now()
       this.#set(contacts)
     }
+  }
+
+  destroyByLabel(labelId) {
+    this.#set(this.#get()
+      .map((contact) => {
+        contact.deletedAt = contact.labels.includes(Number.parseInt(labelId))
+          ? Date.now()
+          : null
+
+        return contact
+      }),
+    )
+  }
+
+  removeLabel(labelId) {
+    this.#set(this.#get()
+      .map((contact) => {
+        contact.labels = contact.labels.filter(id => id !== Number.parseInt(labelId))
+
+        return contact
+      }),
+    )
   }
 
   restore() {
