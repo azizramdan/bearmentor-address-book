@@ -14,12 +14,7 @@
     {
       id: 1,
 
-      labels: [
-        {
-          id: 1,
-          name: 'Personal',
-        },
-      ],
+      labels: [1],
 
       is_favorite: true,
 
@@ -63,12 +58,7 @@
     {
       id: 2,
 
-      labels: [
-        {
-          id: 2,
-          name: 'Work',
-        },
-      ],
+      labels: [2],
 
       is_favorite: false,
 
@@ -188,7 +178,19 @@ class Contact {
   }
 
   #get() {
-    return JSON.parse(localStorage.getItem(this.#STORAGE_KEY))
+    const contacts = JSON.parse(localStorage.getItem(this.#STORAGE_KEY))
+    const labels = (new Label()).index()
+
+    return contacts.map((contact) => {
+      contact.labels = contact.labels.map((id) => {
+        return {
+          id,
+          name: labels.find(label => label.id === id).name,
+        }
+      })
+
+      return contact
+    })
   }
 
   index() {
