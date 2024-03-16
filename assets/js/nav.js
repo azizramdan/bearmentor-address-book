@@ -10,6 +10,7 @@
   renderContactsCount()
   renderLabels()
   initCreateLabelsModal()
+  initRenameLabelsModal()
 
   function initCreateLabelsModal() {
     const modal = document.getElementById('create-label-modal')
@@ -18,7 +19,7 @@
       modal.showModal()
     })
 
-    document.querySelector('.close-modal-button').addEventListener('click', () => {
+    document.getElementById('create-label-close-modal-button').addEventListener('click', () => {
       modal.close()
     })
 
@@ -27,6 +28,37 @@
       const form = new FormData(event.target);
 
       (new Label()).store(form.get('name'))
+
+      modal.close()
+      event.target.reset()
+      renderLabels()
+    })
+  }
+
+  function initRenameLabelsModal() {
+    const modal = document.getElementById('rename-label-modal')
+
+    document.getElementById('nav-labels').addEventListener('click', (event) => {
+      const button = event.target.closest('.rename-label-button')
+
+      if (button) {
+        const label = (new Label()).show(button.dataset.id)
+        document.getElementById('rename-label-id').value = label.id
+        document.getElementById('rename-label-input').value = label.name
+
+        modal.showModal()
+      }
+    })
+
+    document.getElementById('rename-label-close-modal-button').addEventListener('click', () => {
+      modal.close()
+    })
+
+    document.getElementById('rename-label-form').addEventListener('submit', (event) => {
+      event.preventDefault()
+      const form = new FormData(event.target);
+
+      (new Label()).update(form.get('id'), form.get('name'))
 
       modal.close()
       event.target.reset()
@@ -80,8 +112,9 @@
         <div>
           <div class="hidden group-hover:flex">
             <button
-              class="rounded-full hover:bg-gray-300 p-3"
+              class="rename-label-button rounded-full hover:bg-gray-300 p-3"
               title="Rename label"
+              data-id="${label.id}"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -270,8 +270,41 @@
         required
       />
       <div class="flex justify-end gap-3 mt-12">
-        <button type="button"
-          class="close-modal-button text-blue-700 hover:bg-blue-100 rounded-full p-3"
+        <button type="button" id="create-label-close-modal-button"
+          class="text-blue-700 hover:bg-blue-100 rounded-full p-3"
+        >
+          Cancel
+        </button>
+        <button type="submit" class="text-blue-700 hover:bg-blue-100 rounded-full p-3">
+          Save
+        </button>
+      </div>
+    </form>
+    </dialog>
+    <dialog
+      id="rename-label-modal"
+      class="bg-white-50 p-8 rounded-3xl w-[27rem]"
+    >
+    <form id="rename-label-form">
+      <h1 class="text-3xl">Rename label</h1>
+      </div>
+      <input
+        id="rename-label-id"
+        name="id"
+        type="hidden"
+        required
+      />
+      <input
+        id="rename-label-input"
+        name="name"
+        type="text"
+        placeholder="New label"
+        class="p-3 mt-4 w-full border border-gray-700 outline outline-0 focus:outline-1 focus:outline-blue-700 focus:ring-blue-700 focus:border-blue-700 rounded"
+        required
+      />
+      <div class="flex justify-end gap-3 mt-12">
+        <button type="button" id="rename-label-close-modal-button"
+          class="text-blue-700 hover:bg-blue-100 rounded-full p-3"
         >
           Cancel
         </button>

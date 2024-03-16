@@ -151,12 +151,20 @@ class Label {
     this.#set(labels)
   }
 
-  update(id, data) {
+  show(id) {
+    return this.#get().find(label => label.id === Number.parseInt(id))
+  }
+
+  update(id, name) {
+    id = Number.parseInt(id)
     const labels = this.#get()
-    const index = labels.findIndex(label => label.id === Number.parseInt(id))
+    const index = labels.findIndex(label => label.id === id)
 
     if (index !== -1) {
-      labels[index] = data
+      labels[index] = {
+        id,
+        name,
+      }
       this.#set(labels)
     }
   }
