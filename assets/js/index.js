@@ -7,7 +7,7 @@
 
   function refresh() {
     contacts = contactModel.index()
-    favorites = contacts.filter(contact => contact.is_favorite)
+    favorites = contacts.filter(contact => contact.isFavorite)
     renderCounter()
     renderFavoritesSection()
     renderContacts()
@@ -79,15 +79,15 @@
       <div
         class="grow pl-3 grid items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 hover:bg-sky-50 peer"
       >
-        <div>${contact.first_name} ${contact.middle_name} ${contact.last_name}</div>
+        <div>${contact.firstName} ${contact.middleName} ${contact.lastName}</div>
         <a
           href="mailto:${contact.emails[0]?.mail}"
           class="hidden sm:block w-fit hover:text-blue-600"
         >
           ${contact.emails[0]?.mail}
         </a>
-        <div class="hidden md:block">${contact.phone_numbers[0]?.number}</div>
-        <div class="hidden lg:block">${contact.job_title}, ${contact.company}</div>
+        <div class="hidden md:block">${contact.phoneNumbers[0]?.number}</div>
+        <div class="hidden lg:block">${contact.jobTitle}, ${contact.company}</div>
         <div class="hidden xl:flex gap-1">${labelsButton}</div>
       </div>
       <div
@@ -145,7 +145,7 @@
   }
 
   function parseFavoriteButton(contact) {
-    return contact.is_favorite
+    return contact.isFavorite
       ? /* html */`
         <button
           class="remove-from-favorites rounded-full hover:bg-gray-200 p-3"

@@ -162,7 +162,7 @@
               </svg>
             </button>
           </div>
-          <small class="group-hover:hidden mr-5">${label.total_contacts}</small>
+          <small class="group-hover:hidden mr-5">${label.totalContacts}</small>
         </div>
       </a>
     `

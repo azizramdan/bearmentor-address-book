@@ -3,7 +3,7 @@
  * Reset seeder if version changes
  */
 (() => {
-  const VERSION = '0.0.2'
+  const VERSION = '0.0.3'
 
   const labels = [
     {
@@ -22,14 +22,14 @@
 
       labels: [1],
 
-      is_favorite: true,
+      isFavorite: true,
 
-      first_name: 'Aziz',
-      middle_name: 'Ramdan',
-      last_name: 'Kurniawan',
+      firstName: 'Aziz',
+      middleName: 'Ramdan',
+      lastName: 'Kurniawan',
 
       company: 'ARLab',
-      job_title: 'Software Engineer',
+      jobTitle: 'Software Engineer',
 
       emails: [
         {
@@ -38,7 +38,7 @@
         },
       ],
 
-      phone_numbers: [
+      phoneNumbers: [
         {
           number: '6281234567890',
           label: 'Personal',
@@ -49,7 +49,7 @@
         {
           country: 'Indonesia',
           city: 'Bandung',
-          postal_code: '12345',
+          postalCode: '12345',
           street: 'Jl. Cihampelas',
           label: 'Home',
         },
@@ -57,23 +57,23 @@
 
       notes: '',
 
-      created_at: 1710325745518,
-      updated_at: 1710325745518,
-      deleted_at: null,
+      createdAt: 1710325745518,
+      updatedAt: 1710325745518,
+      deletedAt: null,
     },
     {
       id: 2,
 
       labels: [2],
 
-      is_favorite: false,
+      isFavorite: false,
 
-      first_name: 'Azizah',
-      middle_name: 'Ramdani',
-      last_name: 'Kurniawati',
+      firstName: 'Azizah',
+      middleName: 'Ramdani',
+      lastName: 'Kurniawati',
 
       company: 'ARLab',
-      job_title: 'Tech Writer',
+      jobTitle: 'Tech Writer',
 
       emails: [
         {
@@ -82,7 +82,7 @@
         },
       ],
 
-      phone_numbers: [
+      phoneNumbers: [
         {
           number: '6281234567890',
           label: 'Personal',
@@ -93,7 +93,7 @@
         {
           country: 'Indonesia',
           city: 'Bandung',
-          postal_code: '12345',
+          postalCode: '12345',
           street: 'Jl. Cihampelas',
           label: 'Home',
         },
@@ -101,9 +101,9 @@
 
       notes: '',
 
-      created_at: 1710325745518,
-      updated_at: 1710325745518,
-      deleted_at: null,
+      createdAt: 1710325745518,
+      updatedAt: 1710325745518,
+      deletedAt: null,
     },
   ]
 
@@ -138,7 +138,7 @@ class Label {
     const contacts = (new Contact()).index()
 
     labels.forEach((label) => {
-      label.total_contacts = contacts.filter(contact => contact.labels.map(label => label.id).includes(label.id)).length
+      label.totalContacts = contacts.filter(contact => contact.labels.map(label => label.id).includes(label.id)).length
     })
 
     return labels
@@ -198,7 +198,7 @@ class Contact {
   }
 
   index() {
-    const contacts = this.#get().filter(contact => !contact.deleted_at)
+    const contacts = this.#get().filter(contact => !contact.deletedAt)
     const labels = (new Label()).index()
 
     return contacts.map((contact) => {
@@ -232,7 +232,7 @@ class Contact {
     const index = contacts.findIndex(contact => contact.id === Number.parseInt(id))
 
     if (index !== -1) {
-      contacts[index].deleted_at = Date.now()
+      contacts[index].deletedAt = Date.now()
       this.#set(contacts)
     }
   }
@@ -242,7 +242,7 @@ class Contact {
     const index = contacts.findIndex(contact => contact.id === Number.parseInt(id))
 
     if (index !== -1) {
-      contacts[index].deleted_at = null
+      contacts[index].deletedAt = null
       this.#set(contacts)
     }
   }
@@ -250,14 +250,14 @@ class Contact {
   addToFavorites(id) {
     const contact = this.show(id)
 
-    contact.is_favorite = true
+    contact.isFavorite = true
     this.update(id, contact)
   }
 
   removeFromFavorites(id) {
     const contact = this.show(id)
 
-    contact.is_favorite = false
+    contact.isFavorite = false
     this.update(id, contact)
   }
 }
