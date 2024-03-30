@@ -11,7 +11,12 @@
   initEvents()
 
   function refresh() {
-    contacts = contactModel.index()
+    const search = new URLSearchParams(window.location.search).get('search')
+    document.getElementById('search-input').value = search
+
+    contacts = contactModel.index({
+      search,
+    })
     favorites = contacts.filter(contact => contact.isFavorite)
     renderContactsCounter()
     renderFavoritesSection()
