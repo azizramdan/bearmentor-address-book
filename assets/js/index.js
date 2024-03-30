@@ -83,7 +83,7 @@
           >
             ${contact.emails[0]?.mail}
           </a>
-          <div class="hidden md:block">${contact.phoneNumbers[0]?.number}</div>
+          <div class="hidden md:block">${contact.phones[0]?.number}</div>
           <div class="hidden lg:block">${contact.jobTitle}, ${contact.company}</div>
           <div class="hidden xl:flex gap-1">
             ${

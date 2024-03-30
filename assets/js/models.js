@@ -3,7 +3,7 @@
  * Reset seeder if version changes
  */
 (() => {
-  const VERSION = '0.0.3'
+  const VERSION = '0.0.4'
 
   const labels = [
     {
@@ -38,7 +38,7 @@
         },
       ],
 
-      phoneNumbers: [
+      phones: [
         {
           number: '6281234567890',
           label: 'Personal',
@@ -82,7 +82,7 @@
         },
       ],
 
-      phoneNumbers: [
+      phones: [
         {
           number: '6281234567890',
           label: 'Personal',
