@@ -5,6 +5,7 @@
   const contactModel = new Contact()
   let contacts = []
   let favorites = []
+  const deleteModalElement = document.getElementById('delete-contact-modal')
 
   refresh()
   initEvents()
@@ -36,7 +37,11 @@
 
         const deleteButton = event.target.closest('.delete-contact')
         if (deleteButton) {
-          // TODO: show detection modal
+          const modalElement = document.getElementById('delete-contact-modal')
+          document.getElementById('delete-contact-id').value = deleteButton.dataset.id
+
+          modalElement.showModal()
+
           return
         }
 
@@ -45,6 +50,21 @@
           window.location = `/person/?id=${contactItem.dataset.id}`
         }
       })
+    })
+
+    document.getElementById('delete-contact-close-modal-button').addEventListener('click', () => {
+      deleteModalElement.close()
+    })
+
+    document.getElementById('delete-contact-form').addEventListener('submit', (event) => {
+      event.preventDefault()
+      const form = new FormData(event.target);
+
+      (new Contact()).destroy(form.get('id'))
+
+      deleteModalElement.close()
+      event.target.reset()
+      $eventBus.emit(EVENT_CONTACTS_UPDATED)
     })
   }
 

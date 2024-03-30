@@ -1,5 +1,9 @@
 (() => {
   $eventBus.on(EVENT_LABELS_UPDATED, renderLabels)
+  $eventBus.on(EVENT_CONTACTS_UPDATED, () => {
+    renderContactsCounter()
+    renderLabels()
+  })
 
   const navToggleElement = document.getElementById('nav-toggle')
   const navElement = document.getElementById('nav')
