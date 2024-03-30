@@ -108,10 +108,10 @@
   ]
 
   // set default values
-  if (!localStorage.getItem('labels') || localStorage.getItem('VERSION') !== VERSION) {
+  if ((!localStorage.getItem('labels') && localStorage.getItem('VERSION') !== VERSION) || localStorage.getItem('VERSION') !== VERSION) {
     localStorage.setItem('labels', JSON.stringify(labels))
   }
-  if (!localStorage.getItem('contacts') || localStorage.getItem('VERSION') !== VERSION) {
+  if ((!localStorage.getItem('contacts') && localStorage.getItem('VERSION') !== VERSION) || localStorage.getItem('VERSION') !== VERSION) {
     localStorage.setItem('contacts', JSON.stringify(contacts))
   }
 
@@ -246,9 +246,15 @@ class Contact {
   destroyByLabel(labelId) {
     this.#set(this.#get()
       .map((contact) => {
+        if (contact.deletedAt) {
+          return contact
+        }
+
         contact.deletedAt = contact.labels.includes(Number.parseInt(labelId))
           ? Date.now()
           : null
+
+        contact.labels = contact.labels.filter(id => id !== Number.parseInt(labelId))
 
         return contact
       }),
