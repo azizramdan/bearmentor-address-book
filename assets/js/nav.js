@@ -1,14 +1,14 @@
 (() => {
   $eventBus.on(EVENT_LABELS_UPDATED, renderLabels)
 
-  const navToggleEl = document.getElementById('nav-toggle')
-  const navEl = document.getElementById('nav')
+  const navToggleElement = document.getElementById('nav-toggle')
+  const navElement = document.getElementById('nav')
 
   if (window.innerWidth < 1280) {
     toggle()
   }
 
-  navToggleEl.addEventListener('click', toggle)
+  navToggleElement.addEventListener('click', toggle)
   renderContactsCounter()
   renderLabels()
   initCreateLabelsModal()
@@ -16,8 +16,8 @@
   initDeleteLabelsModal()
 
   function toggle() {
-    navEl.classList.toggle('nav-closed')
-    navEl.classList.toggle('nav-open')
+    navElement.classList.toggle('nav-closed')
+    navElement.classList.toggle('nav-open')
   }
 
   function renderContactsCounter() {
@@ -110,14 +110,14 @@
   }
 
   function initCreateLabelsModal() {
-    const modal = document.getElementById('create-label-modal')
+    const modalElement = document.getElementById('create-label-modal')
 
     document.getElementById('create-label-button').addEventListener('click', () => {
-      modal.showModal()
+      modalElement.showModal()
     })
 
     document.getElementById('create-label-close-modal-button').addEventListener('click', () => {
-      modal.close()
+      modalElement.close()
     })
 
     document.getElementById('create-label-form').addEventListener('submit', (event) => {
@@ -126,14 +126,14 @@
 
       (new Label()).store(form.get('name'))
 
-      modal.close()
+      modalElement.close()
       event.target.reset()
       $eventBus.emit(EVENT_LABELS_UPDATED)
     })
   }
 
   function initRenameLabelsModal() {
-    const modal = document.getElementById('rename-label-modal')
+    const modalElement = document.getElementById('rename-label-modal')
 
     document.getElementById('nav-labels').addEventListener('click', (event) => {
       const button = event.target.closest('.rename-label-button')
@@ -145,12 +145,12 @@
         document.getElementById('rename-label-id').value = label.id
         document.getElementById('rename-label-input').value = label.name
 
-        modal.showModal()
+        modalElement.showModal()
       }
     })
 
     document.getElementById('rename-label-close-modal-button').addEventListener('click', () => {
-      modal.close()
+      modalElement.close()
     })
 
     document.getElementById('rename-label-form').addEventListener('submit', (event) => {
@@ -159,14 +159,14 @@
 
       (new Label()).update(form.get('id'), form.get('name'))
 
-      modal.close()
+      modalElement.close()
       event.target.reset()
       $eventBus.emit(EVENT_LABELS_UPDATED)
     })
   }
 
   function initDeleteLabelsModal() {
-    const modal = document.getElementById('delete-label-modal')
+    const modalElement = document.getElementById('delete-label-modal')
 
     document.getElementById('nav-labels').addEventListener('click', (event) => {
       const button = event.target.closest('.delete-label-button')
@@ -188,12 +188,12 @@
         document.getElementById('delete-label-contact-count').textContent = totalContacts
         document.getElementById('delete-label-id').value = id
 
-        modal.showModal()
+        modalElement.showModal()
       }
     })
 
     document.getElementById('delete-label-close-modal-button').addEventListener('click', () => {
-      modal.close()
+      modalElement.close()
     })
 
     document.getElementById('delete-label-form').addEventListener('submit', (event) => {
@@ -202,7 +202,7 @@
 
       (new Label()).destroy(form.get('id'), Number.parseInt(form.get('keep-contacts')) === 1)
 
-      modal.close()
+      modalElement.close()
       event.target.reset()
       $eventBus.emit(EVENT_LABELS_UPDATED)
     })
