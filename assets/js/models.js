@@ -219,6 +219,21 @@ class Contact {
     })
   }
 
+  store(contact) {
+    const now = new Date()
+    contact.id = now.getTime()
+    contact.createdAt = now
+    contact.updatedAt = now
+    contact.deletedAt = null
+
+    const contacts = this.#get()
+
+    contacts.push(contact)
+    this.#set(contacts)
+
+    return contact
+  }
+
   show(id) {
     return this.#get().find(contact => contact.id === Number.parseInt(id))
   }
