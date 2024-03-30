@@ -11,6 +11,7 @@
   navToggleElement.addEventListener('click', toggle)
   renderContactsCounter()
   renderLabels()
+  renderLabelDialogs()
   initCreateLabelsModal()
   initRenameLabelsModal()
   initDeleteLabelsModal()
@@ -206,5 +207,132 @@
       event.target.reset()
       $eventBus.emit(EVENT_LABELS_UPDATED)
     })
+  }
+
+  function renderLabelDialogs() {
+    document.body.insertAdjacentHTML('beforeend', /* html */`
+      <dialog
+        id="create-label-modal"
+        class="bg-white-50 p-8 rounded-3xl w-[27rem]"
+      >
+        <form id="create-label-form">
+          <h1 class="text-3xl">Create label</h1>
+          <input
+            id="create-label-input"
+            name="name"
+            type="text"
+            placeholder="New label"
+            class="p-3 mt-4 w-full border border-gray-700 outline outline-0 focus:outline-1 focus:outline-blue-700 focus:ring-blue-700 focus:border-blue-700 rounded"
+            required
+          />
+          <div class="flex justify-end gap-3 mt-12">
+            <button
+              type="button"
+              id="create-label-close-modal-button"
+              class="text-blue-700 hover:bg-blue-100 rounded-full p-3"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="text-blue-700 hover:bg-blue-100 rounded-full p-3"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </dialog>
+      <dialog
+        id="rename-label-modal"
+        class="bg-white-50 p-8 rounded-3xl w-[27rem]"
+      >
+        <form id="rename-label-form">
+          <h1 class="text-3xl">Rename label</h1>
+          <input id="rename-label-id" name="id" type="hidden" required />
+          <input
+            id="rename-label-input"
+            name="name"
+            type="text"
+            placeholder="New label"
+            class="p-3 mt-4 w-full border border-gray-700 outline outline-0 focus:outline-1 focus:outline-blue-700 focus:ring-blue-700 focus:border-blue-700 rounded"
+            required
+          />
+          <div class="flex justify-end gap-3 mt-12">
+            <button
+              type="button"
+              id="rename-label-close-modal-button"
+              class="text-blue-700 hover:bg-blue-100 rounded-full p-3"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="text-blue-700 hover:bg-blue-100 rounded-full p-3"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </dialog>
+      <dialog
+        id="delete-label-modal"
+        class="bg-white-50 p-8 rounded-3xl w-[39rem]"
+      >
+        <form id="delete-label-form">
+          <h1 class="text-3xl">Delete this label</h1>
+          <div class="mt-5 text-gray-600">
+            This label has <span id="delete-label-contact-count"></span> contact.
+            Choose what to do with it.
+          </div>
+          <input id="delete-label-id" name="id" type="hidden" required />
+          <div class="mt-7 pl-6">
+            <div class="flex items-center mb-4">
+              <input
+                checked
+                id="delete-label-keep-contacts"
+                type="radio"
+                value="1"
+                name="keep-contacts"
+                class="w-5 h-5"
+              />
+              <label
+                for="delete-label-keep-contacts"
+                class="ms-2 text-lg text-gray-800"
+                >Keep all contacts and delete this label</label
+              >
+            </div>
+            <div class="flex items-center">
+              <input
+                id="delete-label-delete-contacts"
+                type="radio"
+                value="0"
+                name="keep-contacts"
+                class="w-5 h-5"
+              />
+              <label
+                for="delete-label-delete-contacts"
+                class="ms-2 text-lg text-gray-800"
+                >Delete all contacts and delete this label</label
+              >
+            </div>
+          </div>
+          <div class="flex justify-end gap-3 mt-12">
+            <button
+              type="button"
+              id="delete-label-close-modal-button"
+              class="text-blue-700 hover:bg-blue-100 rounded-full p-3"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="text-blue-700 hover:bg-blue-100 rounded-full p-3"
+            >
+              Delete
+            </button>
+          </div>
+        </form>
+      </dialog>
+    `)
   }
 })()
