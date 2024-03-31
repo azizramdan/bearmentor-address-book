@@ -1,12 +1,19 @@
 (() => {
   const contactModel = new Contact()
   const id = new URLSearchParams(window.location.search).get('id')
-  const currentContact = contactModel.show(id)
+  let currentContact
 
-  if (!currentContact) {
-    document.getElementById('main').innerHTML = /* html */`<div class="p-8 h-[88dvh]">Contact not found</div>`
+  if (!getContact()) {
     return
   }
+
+  $eventBus.on(EVENT_LABELS_UPDATED, () => {
+    if (!getContact()) {
+      return
+    }
+
+    renderLabels()
+  })
 
   const deleteModalElement = document.getElementById('delete-contact-modal')
 
@@ -25,6 +32,17 @@
 
   document.getElementById('isFavorite').checked = currentContact.isFavorite
   document.getElementById('edit-button').setAttribute('href', `/person/edit/?id=${currentContact.id}`)
+
+  function getContact() {
+    currentContact = contactModel.show(id)
+
+    if (!currentContact) {
+      document.getElementById('main').innerHTML = /* html */`<div class="p-8 h-[88dvh]">Contact not found</div>`
+      return false
+    }
+
+    return true
+  }
 
   function renderFullName() {
     document.getElementById('full-name').textContent = `${currentContact.firstName} ${currentContact.middleName} ${currentContact.lastName}`
