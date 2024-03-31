@@ -18,7 +18,7 @@
       search,
     })
     favorites = contacts.filter(contact => contact.isFavorite)
-    renderContactsCounter()
+    renderContactCounter()
     renderFavoritesSection()
     renderContactsSection()
   }
@@ -73,7 +73,7 @@
     })
   }
 
-  function renderContactsCounter() {
+  function renderContactCounter() {
     document.getElementById('contacts-count').textContent = contacts.length
   }
 
@@ -91,7 +91,9 @@
   }
 
   function renderContactsSection() {
-    document.getElementById('contacts-container').innerHTML = contacts.map(contact => parseContactTemplate(contact)).join('')
+    document.getElementById('contacts-container').innerHTML = contacts.length
+      ? contacts.map(contact => parseContactTemplate(contact)).join('')
+      : 'No results in your contacts'
   }
 
   function parseContactTemplate(contact) {
