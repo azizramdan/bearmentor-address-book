@@ -30,12 +30,15 @@
   }
 
   function renderLabels() {
+    const url = new URL(window.location.href)
+    const isActive = id => url.pathname === '/label/' && Number.parseInt(url.searchParams.get('id')) === id
+
     document.getElementById('nav-labels').innerHTML = (new Label())
       .indexWithTotalContacts()
       .map(label => /* html */ `
         <a
           href="/label/?id=${label.id}"
-          class="flex items-center justify-between rounded-full hover:bg-slate-200 w-full py-1 pl-5 font-semibold group h-14"
+          class="flex items-center justify-between rounded-full w-full py-1 pl-5 font-semibold group h-14 ${isActive(label.id) ? 'bg-sky-200 hover:brightness-95' : 'hover:bg-slate-200 '}"
         >
           <span class="flex items-center gap-3">
             <svg
@@ -56,7 +59,7 @@
           <div>
             <div class="xl:hidden xl:group-hover:flex">
               <button
-                class="rename-label-button rounded-full hover:bg-gray-300 p-3"
+                class="rename-label-button rounded-full p-3 ${isActive(label.id) ? 'bg-sky-200 hover:brightness-95' : 'hover:bg-gray-300'}"
                 title="Rename label"
                 data-id="${label.id}"
               >
@@ -80,7 +83,7 @@
                 </svg>
               </button>
               <button
-                class="delete-label-button rounded-full hover:bg-gray-300 p-3"
+                class="delete-label-button rounded-full p-3 ${isActive(label.id) ? 'bg-sky-200 hover:brightness-95' : 'hover:bg-gray-300'}"
                 title="Delete label"
                 data-id="${label.id}"
               >
