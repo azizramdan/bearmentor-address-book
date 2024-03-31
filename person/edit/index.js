@@ -4,7 +4,7 @@
   const currentContact = contactModel.find(id)
 
   if (!currentContact) {
-    document.getElementById('main').innerHTML = 'Contact not found'
+    document.getElementById('main').innerHTML = /* html */`<div class="p-8 h-[88dvh]">Contact not found</div>`
     return
   }
 
