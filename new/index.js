@@ -105,7 +105,9 @@
       </div>
     `)
 
-    document.getElementById('emails-form-icon').classList.remove('invisible')
+    emailsFormContainerElement.classList.remove('hidden')
+    emailsFormContainerElement.classList.add('flex')
+    document.getElementById('emails-form-icon').classList.remove('hidden')
   }
 
   function addPhoneForm() {
@@ -178,13 +180,16 @@
       </div>
     `)
 
-    document.getElementById('phones-form-icon').classList.remove('invisible')
+    phonesFormContainerElement.classList.remove('hidden')
+    phonesFormContainerElement.classList.add('flex')
+    document.getElementById('phones-form-icon').classList.remove('hidden')
   }
 
   function addAddressForm() {
     const id = (new Date()).getTime()
 
-    document.getElementById('addresses-form-container').insertAdjacentHTML('beforeend', /* html */`
+    const addressesFormContainerElement = document.getElementById('addresses-form-container')
+    addressesFormContainerElement.insertAdjacentHTML('beforeend', /* html */`
       <div class="address-form grid grid-cols-12">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -321,6 +326,9 @@
         </div>
       </div>
     `)
+
+    addressesFormContainerElement.classList.remove('hidden')
+    addressesFormContainerElement.classList.add('flex')
   }
 
   function initEvents() {
@@ -330,10 +338,12 @@
         if (removeEmailButton) {
           removeEmailButton.closest('.email-form').remove()
 
-          const emailFormCount = document.getElementById('emails-form-container').children.length
+          const emailFormCount = document.getElementById(section).children.length
 
           if (!emailFormCount) {
-            document.getElementById('emails-form-icon').classList.add('invisible')
+            document.getElementById(section).classList.add('hidden')
+            document.getElementById(section).classList.remove('flex')
+            document.getElementById('emails-form-icon').classList.add('hidden')
           }
 
           return
@@ -343,10 +353,12 @@
         if (removePhoneButton) {
           removePhoneButton.closest('.phone-form').remove()
 
-          const phoneFormCount = document.getElementById('phones-form-container').children.length
+          const phoneFormCount = document.getElementById(section).children.length
 
           if (!phoneFormCount) {
-            document.getElementById('phones-form-icon').classList.add('invisible')
+            document.getElementById(section).classList.add('hidden')
+            document.getElementById(section).classList.remove('flex')
+            document.getElementById('phones-form-icon').classList.add('hidden')
           }
 
           return
@@ -355,6 +367,13 @@
         const removeAddressButton = event.target.closest('.remove-address-form')
         if (removeAddressButton) {
           removeAddressButton.closest('.address-form').remove()
+
+          const addressFormCount = document.getElementById(section).children.length
+
+          if (!addressFormCount) {
+            document.getElementById(section).classList.add('hidden')
+            document.getElementById(section).classList.remove('flex')
+          }
         }
       })
     })
