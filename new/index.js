@@ -449,7 +449,6 @@
     })
 
     $eventBus.emit(EVENT_CONTACTS_UPDATED)
-    alert('Contact created successfully')
     window.location.href = `/person/?id=${contact.id}`
   }
 
