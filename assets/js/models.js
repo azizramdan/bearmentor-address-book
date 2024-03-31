@@ -251,7 +251,7 @@ class Contact {
   }
 
   show(id) {
-    return this.#get().find(contact => contact.id === Number.parseInt(id))
+    return this.#get().find(contact => contact.id === Number.parseInt(id) && contact.deletedAt === null)
   }
 
   update(id, data) {
@@ -259,7 +259,13 @@ class Contact {
     const index = contacts.findIndex(contact => contact.id === Number.parseInt(id))
 
     if (index !== -1) {
-      contacts[index] = data
+      data.updatedAt = new Date()
+
+      contacts[index] = {
+        ...contacts[index],
+        ...data,
+      }
+
       this.#set(contacts)
     }
   }
