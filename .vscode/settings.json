@@ -40,5 +40,9 @@
     "yaml",
     "toml",
     "css"
-  ]
+  ],
+
+  "[javascript]": {
+    "editor.tabSize": 2
+  }
 }

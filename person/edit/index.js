@@ -1,7 +1,7 @@
 (() => {
   const contactModel = new Contact()
   const id = new URLSearchParams(window.location.search).get('id')
-  const currentContact = contactModel.show(id)
+  const currentContact = contactModel.find(id)
 
   if (!currentContact) {
     document.getElementById('main').innerHTML = 'Contact not found'

@@ -3,7 +3,9 @@
  * Reset seeder if version changes
  */
 (() => {
-  const VERSION = '0.0.4'
+  const now = new Date()
+
+  const VERSION = '0.0.5'
 
   const labels = [
     {
@@ -57,8 +59,8 @@
 
       notes: '',
 
-      createdAt: 1710325745518,
-      updatedAt: 1710325745518,
+      createdAt: now,
+      updatedAt: now,
       deletedAt: null,
     },
     {
@@ -101,8 +103,8 @@
 
       notes: '',
 
-      createdAt: 1710325745518,
-      updatedAt: 1710325745518,
+      createdAt: now,
+      updatedAt: now,
       deletedAt: null,
     },
   ]
@@ -250,8 +252,34 @@ class Contact {
     return contact
   }
 
-  show(id) {
+  /**
+   * Find contact and return it without label relationships
+   */
+  find(id) {
     return this.#get().find(contact => contact.id === Number.parseInt(id) && contact.deletedAt === null)
+  }
+
+  /**
+   * Find contact and return it with label relationships
+   */
+  show(id) {
+    const contact = this.find(id)
+
+    if (!contact) {
+      return undefined
+    }
+
+    const labels = (new Label()).index()
+
+    return {
+      ...contact,
+      labels: contact.labels.map((id) => {
+        return {
+          id,
+          name: labels.find(label => label.id === id).name,
+        }
+      }),
+    }
   }
 
   update(id, data) {
@@ -319,14 +347,14 @@ class Contact {
   }
 
   addToFavorites(id) {
-    const contact = this.show(id)
+    const contact = this.find(id)
 
     contact.isFavorite = true
     this.update(id, contact)
   }
 
   removeFromFavorites(id) {
-    const contact = this.show(id)
+    const contact = this.find(id)
 
     contact.isFavorite = false
     this.update(id, contact)
