@@ -54,7 +54,7 @@
             ${label.name}
           </span>
           <div>
-            <div class="hidden group-hover:flex">
+            <div class="xl:hidden xl:group-hover:flex">
               <button
                 class="rename-label-button rounded-full hover:bg-gray-300 p-3"
                 title="Rename label"
@@ -107,7 +107,7 @@
                 </svg>
               </button>
             </div>
-            <small class="group-hover:hidden mr-5">${label.totalContacts}</small>
+            <small class="hidden xl:block xl:group-hover:hidden mr-5">${label.totalContacts}</small>
           </div>
         </a>
       `)
