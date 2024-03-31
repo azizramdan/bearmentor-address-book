@@ -166,11 +166,9 @@
           <div id="nav-labels" class="mt-3"></div>
         </div>
       </nav>
-      <main
-        class="overflow-y-auto h-[88dvh] w-full bg-white xl:rounded-3xl py-10 px-6"
-      >
-        <form id="new-contact-form" class="max-w-3xl">
-          <div class="flex justify-between items-center">
+      <main class="w-full bg-white xl:rounded-3xl h-fit">
+        <form id="new-contact-form">
+          <div class="flex justify-between items-center max-w-3xl py-6 px-6">
             <a href="/" title="Back" class="rounded-full hover:bg-gray-200 p-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -248,319 +246,321 @@
               </button>
             </div>
           </div>
-          <div class="text-center mt-7">
-            <div class="grid grid-cols-12">
-              <div class="col-span-10">
-                <div>Select labels</div>
-                <div
-                  id="label-options"
-                  class="flex gap-2 justify-center mt-2"
-                ></div>
-              </div>
-            </div>
-
-            <div class="mt-7 flex flex-col gap-8">
-              <div class="grid grid-cols-12 gap-5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="icon icon-tabler icons-tabler-outline icon-tabler-user"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                </svg>
-                <div class="col-span-11 grid grid-cols-12 gap-4">
-                  <div class="col-span-10 bg-white rounded-lg text-left">
-                    <div class="relative bg-inherit">
-                      <input
-                        type="text"
-                        id="firstName"
-                        name="firstName"
-                        class="peer bg-transparent h-10 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600"
-                        placeholder="Type inside me"
-                        required
-                      />
-                      <label
-                        for="firstName"
-                        class="absolute cursor-text left-0 -top-3 text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-blue-600 transition-all"
-                      >
-                        First name
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-span-10 bg-white rounded-lg text-left">
-                    <div class="relative bg-inherit">
-                      <input
-                        type="text"
-                        id="middleName"
-                        name="middleName"
-                        class="peer bg-transparent h-10 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600"
-                        placeholder="Type inside me"
-                      />
-                      <label
-                        for="middleName"
-                        class="absolute cursor-text left-0 -top-3 text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-blue-600 transition-all"
-                      >
-                        Middle name
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-span-10 bg-white rounded-lg text-left">
-                    <div class="relative bg-inherit">
-                      <input
-                        type="text"
-                        id="lastName"
-                        name="lastName"
-                        class="peer bg-transparent h-10 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600"
-                        placeholder="Type inside me"
-                      />
-                      <label
-                        for="lastName"
-                        class="absolute cursor-text left-0 -top-3 text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-blue-600 transition-all"
-                      >
-                        Last name
-                      </label>
-                    </div>
-                  </div>
+          <div class="overflow-y-auto h-[80dvh]">
+            <div class="max-w-3xl text-center mt-7 pb-4 px-6">
+              <div class="grid grid-cols-12">
+                <div class="col-span-10">
+                  <div>Select labels</div>
+                  <div
+                    id="label-options"
+                    class="flex gap-2 justify-center mt-2"
+                  ></div>
                 </div>
               </div>
 
-              <div class="grid grid-cols-12 gap-5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="icon icon-tabler icons-tabler-outline icon-tabler-building"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M3 21l18 0" />
-                  <path d="M9 8l1 0" />
-                  <path d="M9 12l1 0" />
-                  <path d="M9 16l1 0" />
-                  <path d="M14 8l1 0" />
-                  <path d="M14 12l1 0" />
-                  <path d="M14 16l1 0" />
-                  <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" />
-                </svg>
-                <div class="col-span-11 grid grid-cols-12 gap-4">
-                  <div class="col-span-10 bg-white rounded-lg text-left">
-                    <div class="relative bg-inherit">
-                      <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        class="peer bg-transparent h-10 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600"
-                        placeholder="Type inside me"
-                      />
-                      <label
-                        for="company"
-                        class="absolute cursor-text left-0 -top-3 text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-blue-600 transition-all"
-                      >
-                        Company
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-span-10 bg-white rounded-lg text-left">
-                    <div class="relative bg-inherit">
-                      <input
-                        type="text"
-                        id="jobTitle"
-                        name="jobTitle"
-                        class="peer bg-transparent h-10 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600"
-                        placeholder="Type inside me"
-                      />
-                      <label
-                        for="jobTitle"
-                        class="absolute cursor-text left-0 -top-3 text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-blue-600 transition-all"
-                      >
-                        Job title
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-12 gap-5">
-                <svg
-                  id="emails-form-icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="icon icon-tabler icons-tabler-outline icon-tabler-mail hidden"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path
-                    d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
-                  />
-                  <path d="M3 7l9 6l9 -6" />
-                </svg>
-                <div
-                  id="emails-form-container"
-                  class="col-start-2 col-span-11 flex-col gap-6 hidden"
-                ></div>
-                <div class="col-start-2 col-span-11 grid grid-cols-12">
-                  <button
-                    id="add-email-form"
-                    type="button"
-                    class="col-span-10 flex gap-3 justify-center text-blue-600 font-medium rounded-full bg-sky-50 p-3"
+              <div class="mt-7 flex flex-col gap-8">
+                <div class="grid grid-cols-12 gap-5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-user"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M12 5l0 14" />
-                      <path d="M5 12l14 0" />
-                    </svg>
-                    <span>Add email</span>
-                  </button>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                  </svg>
+                  <div class="col-span-11 grid grid-cols-12 gap-4">
+                    <div class="col-span-10 bg-white rounded-lg text-left">
+                      <div class="relative bg-inherit">
+                        <input
+                          type="text"
+                          id="firstName"
+                          name="firstName"
+                          class="peer bg-transparent h-10 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600"
+                          placeholder="Type inside me"
+                          required
+                        />
+                        <label
+                          for="firstName"
+                          class="absolute cursor-text left-0 -top-3 text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-blue-600 transition-all"
+                        >
+                          First name
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-span-10 bg-white rounded-lg text-left">
+                      <div class="relative bg-inherit">
+                        <input
+                          type="text"
+                          id="middleName"
+                          name="middleName"
+                          class="peer bg-transparent h-10 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600"
+                          placeholder="Type inside me"
+                        />
+                        <label
+                          for="middleName"
+                          class="absolute cursor-text left-0 -top-3 text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-blue-600 transition-all"
+                        >
+                          Middle name
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-span-10 bg-white rounded-lg text-left">
+                      <div class="relative bg-inherit">
+                        <input
+                          type="text"
+                          id="lastName"
+                          name="lastName"
+                          class="peer bg-transparent h-10 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600"
+                          placeholder="Type inside me"
+                        />
+                        <label
+                          for="lastName"
+                          class="absolute cursor-text left-0 -top-3 text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-blue-600 transition-all"
+                        >
+                          Last name
+                        </label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <div class="grid grid-cols-12 gap-5">
-                <svg
-                  id="phones-form-icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="icon icon-tabler icons-tabler-outline icon-tabler-phone hidden"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path
-                    d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"
-                  />
-                </svg>
-                <div
-                  id="phones-form-container"
-                  class="col-start-2 col-span-11 flex-col gap-6 hidden"
-                ></div>
-                <div class="col-start-2 col-span-11 grid grid-cols-12">
-                  <button
-                    id="add-phone-form"
-                    type="button"
-                    class="col-span-10 flex gap-3 justify-center text-blue-600 font-medium rounded-full bg-sky-50 p-3"
+                <div class="grid grid-cols-12 gap-5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-building"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M12 5l0 14" />
-                      <path d="M5 12l14 0" />
-                    </svg>
-                    <span>Add phone</span>
-                  </button>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 21l18 0" />
+                    <path d="M9 8l1 0" />
+                    <path d="M9 12l1 0" />
+                    <path d="M9 16l1 0" />
+                    <path d="M14 8l1 0" />
+                    <path d="M14 12l1 0" />
+                    <path d="M14 16l1 0" />
+                    <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" />
+                  </svg>
+                  <div class="col-span-11 grid grid-cols-12 gap-4">
+                    <div class="col-span-10 bg-white rounded-lg text-left">
+                      <div class="relative bg-inherit">
+                        <input
+                          type="text"
+                          id="company"
+                          name="company"
+                          class="peer bg-transparent h-10 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600"
+                          placeholder="Type inside me"
+                        />
+                        <label
+                          for="company"
+                          class="absolute cursor-text left-0 -top-3 text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-blue-600 transition-all"
+                        >
+                          Company
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-span-10 bg-white rounded-lg text-left">
+                      <div class="relative bg-inherit">
+                        <input
+                          type="text"
+                          id="jobTitle"
+                          name="jobTitle"
+                          class="peer bg-transparent h-10 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600"
+                          placeholder="Type inside me"
+                        />
+                        <label
+                          for="jobTitle"
+                          class="absolute cursor-text left-0 -top-3 text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-blue-600 transition-all"
+                        >
+                          Job title
+                        </label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <div class="grid grid-cols-12 gap-5">
-                <div
-                  id="addresses-form-container"
-                  class="col-span-full flex-col gap-6 hidden"
-                ></div>
-                <div class="col-start-2 col-span-11 grid grid-cols-12">
-                  <button
-                    id="add-address-form"
-                    type="button"
-                    class="col-span-10 flex gap-3 justify-center text-blue-600 font-medium rounded-full bg-sky-50 p-3"
+                <div class="grid grid-cols-12 gap-5">
+                  <svg
+                    id="emails-form-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-mail hidden"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
+                    />
+                    <path d="M3 7l9 6l9 -6" />
+                  </svg>
+                  <div
+                    id="emails-form-container"
+                    class="col-start-2 col-span-11 flex-col gap-6 hidden"
+                  ></div>
+                  <div class="col-start-2 col-span-11 grid grid-cols-12">
+                    <button
+                      id="add-email-form"
+                      type="button"
+                      class="col-span-10 flex gap-3 justify-center text-blue-600 font-medium rounded-full bg-sky-50 p-3"
                     >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M12 5l0 14" />
-                      <path d="M5 12l14 0" />
-                    </svg>
-                    <span>Add address</span>
-                  </button>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-12 gap-5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="icon icon-tabler icons-tabler-outline icon-tabler-note"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M13 20l7 -7" />
-                  <path
-                    d="M13 20v-6a1 1 0 0 1 1 -1h6v-7a2 2 0 0 0 -2 -2h-12a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7"
-                  />
-                </svg>
-                <div class="col-span-11 grid grid-cols-12 gap-4">
-                  <div class="col-span-10 bg-white rounded-lg text-left">
-                    <div class="relative bg-inherit">
-                      <textarea
-                        id="notes"
-                        name="notes"
-                        class="peer bg-transparent h-24 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600 pt-3"
-                        placeholder="Type inside me"
-                      ></textarea>
-                      <label
-                        for="notes"
-                        class="absolute cursor-text left-0 -top-3 text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-blue-600 transition-all"
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
                       >
-                        Notes
-                      </label>
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 5l0 14" />
+                        <path d="M5 12l14 0" />
+                      </svg>
+                      <span>Add email</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-12 gap-5">
+                  <svg
+                    id="phones-form-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-phone hidden"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"
+                    />
+                  </svg>
+                  <div
+                    id="phones-form-container"
+                    class="col-start-2 col-span-11 flex-col gap-6 hidden"
+                  ></div>
+                  <div class="col-start-2 col-span-11 grid grid-cols-12">
+                    <button
+                      id="add-phone-form"
+                      type="button"
+                      class="col-span-10 flex gap-3 justify-center text-blue-600 font-medium rounded-full bg-sky-50 p-3"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 5l0 14" />
+                        <path d="M5 12l14 0" />
+                      </svg>
+                      <span>Add phone</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-12 gap-5">
+                  <div
+                    id="addresses-form-container"
+                    class="col-span-full flex-col gap-6 hidden"
+                  ></div>
+                  <div class="col-start-2 col-span-11 grid grid-cols-12">
+                    <button
+                      id="add-address-form"
+                      type="button"
+                      class="col-span-10 flex gap-3 justify-center text-blue-600 font-medium rounded-full bg-sky-50 p-3"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 5l0 14" />
+                        <path d="M5 12l14 0" />
+                      </svg>
+                      <span>Add address</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-12 gap-5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-note"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M13 20l7 -7" />
+                    <path
+                      d="M13 20v-6a1 1 0 0 1 1 -1h6v-7a2 2 0 0 0 -2 -2h-12a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7"
+                    />
+                  </svg>
+                  <div class="col-span-11 grid grid-cols-12 gap-4">
+                    <div class="col-span-10 bg-white rounded-lg text-left">
+                      <div class="relative bg-inherit">
+                        <textarea
+                          id="notes"
+                          name="notes"
+                          class="peer bg-transparent h-24 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600 pt-3"
+                          placeholder="Type inside me"
+                        ></textarea>
+                        <label
+                          for="notes"
+                          class="absolute cursor-text left-0 -top-3 text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3 peer-focus:-top-3 peer-focus:text-blue-600 transition-all"
+                        >
+                          Notes
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>
