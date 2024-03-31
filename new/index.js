@@ -5,6 +5,7 @@
   addEmailForm()
   addPhoneForm()
   initEvents()
+  renderLabelDatalists()
 
   document.getElementById('add-email-form').addEventListener('click', addEmailForm)
   document.getElementById('add-phone-form').addEventListener('click', addPhoneForm)
@@ -64,6 +65,7 @@
                 type="text"
                 id="emails[${id}][label]"
                 name="emails[${id}][label]"
+                list="default-labels-list"
                 class="peer bg-transparent h-10 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600"
                 placeholder="Type inside me"
               />
@@ -136,6 +138,7 @@
                 type="text"
                 id="phones[${id}][label]"
                 name="phones[${id}][label]"
+                list="phone-labels-list"
                 class="peer bg-transparent h-10 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600"
                 placeholder="Type inside me"
               />
@@ -278,6 +281,7 @@
                   type="text"
                   id="addresses[${id}][label]"
                   name="addresses[${id}][label]"
+                  list="default-labels-list"
                   class="peer bg-transparent h-10 w-full rounded-sm placeholder-transparent ring-1 focus:ring-2 px-2 ring-gray-500 focus:ring-blue-600 focus:outline-none focus:border-rose-600"
                   placeholder="Type inside me"
                 />
@@ -428,5 +432,16 @@
     $eventBus.emit(EVENT_CONTACTS_UPDATED)
     alert('Contact created successfully')
     window.location.href = `/person/?id=${contact.id}`
+  }
+
+  function renderLabelDatalists() {
+    document.body.insertAdjacentHTML('beforeend', /* html */`
+      <datalist id="default-labels-list">
+        ${window.DEFAULT_LABELS_LIST.map(label => `<option value="${label}"></option>`).join('')}
+      </datalist>
+      <datalist id="phone-labels-list">
+        ${window.PHONE_LABELS_LIST.map(label => `<option value="${label}"></option>`).join('')}
+      </datalist>
+    `)
   }
 })()

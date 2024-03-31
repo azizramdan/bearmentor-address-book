@@ -252,3 +252,21 @@ window.COUNTRIES = [
   'Zambia',
   'Zimbabwe',
 ]
+
+window.DEFAULT_LABELS_LIST = [
+  'Home',
+  'Work',
+  'Other',
+]
+
+window.PHONE_LABELS_LIST = [
+  'Home',
+  'Work',
+  'Other',
+  'Mobile',
+  'Main',
+  'Home Fax',
+  'Work Fax',
+  'Google Voice',
+  'Pager',
+]
