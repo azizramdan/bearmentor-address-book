@@ -37,7 +37,7 @@
 
   function addEmailForm() {
     const formContainerElement = document.getElementById('emails-form-container')
-    const id = (new Date()).getTime()
+    const id = Date.now()
 
     formContainerElement.insertAdjacentHTML('beforeend', /* html */`
       <div class="email-form grid grid-cols-6">
@@ -112,7 +112,7 @@
 
   function addPhoneForm() {
     const formContainerElement = document.getElementById('phones-form-container')
-    const id = (new Date()).getTime()
+    const id = Date.now()
 
     formContainerElement.insertAdjacentHTML('beforeend', /* html */`
       <div class="phone-form grid grid-cols-6">
@@ -186,7 +186,7 @@
   }
 
   function addAddressForm() {
-    const id = (new Date()).getTime()
+    const id = Date.now()
 
     const formContainerElement = document.getElementById('addresses-form-container')
     formContainerElement.insertAdjacentHTML('beforeend', /* html */`

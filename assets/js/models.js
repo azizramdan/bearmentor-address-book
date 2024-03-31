@@ -146,7 +146,7 @@ class Label {
 
   store(name) {
     const labels = this.#get()
-    const id = new Date().getTime()
+    const id = Date.now()
     labels.push({ id, name })
     this.#set(labels)
   }
