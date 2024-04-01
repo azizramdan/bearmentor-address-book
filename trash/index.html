@@ -16,6 +16,7 @@
     <script defer src="/assets/js/event-bus.js"></script>
     <script defer src="/assets/js/models.js"></script>
     <script defer src="/assets/js/nav.js"></script>
+    <script defer src="/trash/index.js"></script>
   </head>
   <body class="overflow-hidden bg-slate-50">
     <header class="px-5 py-4 flex gap-6 items-center">
@@ -164,7 +165,99 @@
           <div id="nav-labels" class="mt-3"></div>
         </div>
       </nav>
-      <main class="w-full bg-white xl:rounded-3xl pt-8 px-6">trash page</main>
+      <main class="w-full bg-white xl:rounded-3xl h-fit pt-8 px-6">
+        <div class="p-4 bg-zinc-200">
+          Contacts that have been in Trash more than 30 days will be deleted
+          forever
+          <button
+            id="empty-trash-button"
+            class="text-blue-700 font-medium py-3 px-4 rounded-full hover:bg-blue-400/10 ml-3"
+          >
+            Empty Trash now
+          </button>
+        </div>
+
+        <div class="flex gap-2 px-4 items-center mt-4">
+          <h1 class="text-3xl">Trash</h1>
+          <span class="text-base">(<span id="contacts-count">0</span>)</span>
+        </div>
+
+        <div>
+          <form class="flex justify-end">
+            <div class="relative w-full max-w-lg">
+              <input
+                id="search-input"
+                type="search"
+                name="search"
+                class="block p-2.5 w-full z-20 text-gray-900 bg-white rounded-lg border border-gray-300 focus-visible:outline focus-visible:outline-1 focus-visible:outline-gray-300 focus-visible:bg-white placeholder-shown:bg-gray-50"
+                placeholder="Search contacts..."
+                autofocus
+              />
+              <button
+                type="submit"
+                class="absolute top-0 end-0 p-2.5 font-medium h-full bg-gray-200 rounded-e-lg border border-gray-300 hover:bg-gray-300 focus-visible:outline focus-visible:outline-1 focus-visible:outline-gray-300"
+              >
+                <svg
+                  class="w-4 h-4"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+                <span class="sr-only">Search</span>
+              </button>
+            </div>
+          </form>
+
+          <div class="flex justify-between items-center mb-4 mt-8 px-4">
+            <div class="grow grid pl-3 grid-cols-2">
+              <div>Name</div>
+              <div>Date deleted</div>
+            </div>
+            <div class="hidden md:block w-32"></div>
+          </div>
+          <hr class="my-2 border-gray-300 mx-2" />
+          <div class="overflow-y-auto h-[70dvh]">
+            <div id="contacts-container"></div>
+          </div>
+        </div>
+      </main>
     </div>
+
+    <dialog
+      id="empty-trash-modal"
+      class="bg-white-50 p-8 rounded-3xl w-[35rem]"
+    >
+      <form id="empty-trash-form">
+        <h1 class="text-3xl">Empty Trash?</h1>
+        <input id="empty-trash-id" name="id" type="hidden" required />
+        <p class="mt-6 text-gray-700">
+          Contacts in Trash will be deleted forever. This can't be undone.
+        </p>
+        <div class="flex justify-end gap-3 mt-12">
+          <button
+            type="button"
+            id="empty-trash-close-modal-button"
+            class="text-blue-700 hover:bg-blue-100 rounded-full p-3"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="text-blue-700 hover:bg-blue-100 rounded-full p-3"
+          >
+            Empty Trash
+          </button>
+        </div>
+      </form>
+    </dialog>
   </body>
 </html>

@@ -237,6 +237,27 @@ class Contact {
     })
   }
 
+  trashed(filters = {}) {
+    let contacts = this.#get().filter(contact => contact.deletedAt)
+
+    if (filters.search) {
+      const search = filters.search.toLowerCase()
+
+      contacts = contacts
+        .filter(contact =>
+          contact.firstName.toLowerCase().includes(search)
+          || contact.middleName.toLowerCase().includes(search)
+          || contact.lastName.toLowerCase().includes(search)
+          || contact.emails.some(email => email.mail.toLowerCase().includes(search))
+          || contact.phones.some(phone => phone.number.toLowerCase().includes(search))
+          || contact.company.toLowerCase().includes(search)
+          || contact.jobTitle.toLowerCase().includes(search),
+        )
+    }
+
+    return contacts
+  }
+
   store(contact) {
     const now = new Date()
     contact.id = now.getTime()
@@ -336,7 +357,13 @@ class Contact {
     )
   }
 
-  restore() {
+  destroyTrash() {
+    this.#set(this.#get()
+      .filter(contact => !contact.deletedAt),
+    )
+  }
+
+  recover(id) {
     const contacts = this.#get()
     const index = contacts.findIndex(contact => contact.id === Number.parseInt(id))
 
