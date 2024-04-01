@@ -276,15 +276,20 @@ class Contact {
   /**
    * Find contact and return it without label relationships
    */
-  find(id) {
-    return this.#get().find(contact => contact.id === Number.parseInt(id) && contact.deletedAt === null)
+  find(id, includeTrash = false) {
+    return this.#get().find(contact =>
+      contact.id === Number.parseInt(id)
+      && (includeTrash
+        ? true
+        : contact.deletedAt === null),
+    )
   }
 
   /**
    * Find contact and return it with label relationships
    */
-  show(id) {
-    const contact = this.find(id)
+  show(id, includeTrash = false) {
+    const contact = this.find(id, includeTrash)
 
     if (!contact) {
       return undefined
@@ -327,6 +332,10 @@ class Contact {
       contacts[index].deletedAt = Date.now()
       this.#set(contacts)
     }
+  }
+
+  forceDelete(id) {
+    this.#set(this.#get().filter(contact => contact.id !== Number.parseInt(id)))
   }
 
   destroyByLabel(labelId) {

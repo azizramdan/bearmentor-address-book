@@ -1,6 +1,8 @@
 (() => {
   const contactModel = new Contact()
-  const id = new URLSearchParams(window.location.search).get('id')
+  const url = new URLSearchParams(window.location.search)
+  const id = url.get('id')
+  const includeTrash = url.get('includeTrash')
   let currentContact
 
   if (!getContact()) {
@@ -19,7 +21,10 @@
 
   initIsFavoriteEvent()
   initDeleteEvent()
+  initRecoverEvent()
+  initForceDeleteEvent()
 
+  renderDeletedContactDetail()
   renderFullName()
   renderJobTitleCompany()
   renderLabels()
@@ -34,7 +39,7 @@
   document.getElementById('edit-button').setAttribute('href', `/person/edit/?id=${currentContact.id}`)
 
   function getContact() {
-    currentContact = contactModel.show(id)
+    currentContact = contactModel.show(id, includeTrash === '1')
 
     if (!currentContact) {
       document.getElementById('main').innerHTML = /* html */`<div class="p-8 h-[88dvh]">Contact not found</div>`
@@ -42,6 +47,13 @@
     }
 
     return true
+  }
+
+  function renderDeletedContactDetail() {
+    if (currentContact.deletedAt) {
+      document.getElementById('actions-section').classList.add('hidden')
+      document.getElementById('trash-description').classList.remove('hidden')
+    }
   }
 
   function renderFullName() {
@@ -172,15 +184,45 @@
       contactModel.destroy(currentContact.id)
 
       deleteModalElement.close()
-      $eventBus.emit(EVENT_CONTACTS_UPDATED)
 
       window.location = '/'
     })
   }
 
+  function initRecoverEvent() {
+    document.getElementById('recover-button').addEventListener('click', () => {
+      contactModel.recover(currentContact.id)
+
+      window.location = '/trash'
+    })
+  }
+
+  function initForceDeleteEvent() {
+    const forceDeleteModalElement = document.getElementById('force-delete-contact-modal')
+
+    document.getElementById('force-delete-button').addEventListener('click', () => {
+      forceDeleteModalElement.showModal()
+    })
+
+    document.getElementById('force-delete-contact-close-modal-button').addEventListener('click', () => {
+      forceDeleteModalElement.close()
+    })
+
+    document.getElementById('force-delete-contact-form').addEventListener('submit', (event) => {
+      event.preventDefault()
+      contactModel.forceDelete(currentContact.id)
+
+      forceDeleteModalElement.close()
+
+      window.location = '/trash'
+    })
+  }
+
   function parseEmptyItem(text) {
-    return /* html */`
-      <li>
+    return currentContact.deletedAt
+      ? ''
+      : /* html */`
+        <li>
         <a
           href="/person/edit/?id=${currentContact.id}"
           class="text-blue-600"
