@@ -5,7 +5,7 @@
 (() => {
   const now = new Date()
 
-  const VERSION = '0.0.5'
+  const VERSION = '0.0.6'
 
   const labels = [
     {
@@ -221,6 +221,10 @@ class Contact {
           || contact.company.toLowerCase().includes(search)
           || contact.jobTitle.toLowerCase().includes(search),
         )
+    }
+
+    if (filters.labelId) {
+      contacts = contacts.filter(contact => contact.labels.includes(filters.labelId))
     }
 
     const labels = (new Label()).index()
