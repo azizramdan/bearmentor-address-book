@@ -5,7 +5,7 @@
 (() => {
   const now = new Date()
 
-  const VERSION = '0.0.6'
+  const VERSION = '0.0.7'
 
   const labels = [
     {
@@ -333,7 +333,7 @@ class Contact {
     const index = contacts.findIndex(contact => contact.id === Number.parseInt(id))
 
     if (index !== -1) {
-      contacts[index].deletedAt = Date.now()
+      contacts[index].deletedAt = new Date()
       this.#set(contacts)
     }
   }
@@ -350,7 +350,7 @@ class Contact {
         }
 
         contact.deletedAt = contact.labels.includes(Number.parseInt(labelId))
-          ? Date.now()
+          ? new Date()
           : null
 
         contact.labels = contact.labels.filter(id => id !== Number.parseInt(labelId))
